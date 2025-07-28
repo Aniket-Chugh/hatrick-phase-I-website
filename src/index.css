@@ -6,6 +6,7 @@
 @tailwind utilities;
 
 
+
 * {
     margin: 0;
     padding: 0;
@@ -62,6 +63,31 @@ body {
 
 
 
+.glass-effect {
+  background-color: transparent; /* Fully transparent */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft depth shadow */
+  transition: all 0.3s ease-in-out;
+
+  /* Flexbox */
+  display: flex;
+}
+
+
+/* Optional: Better for mobile */
+@media (max-width: 768px) {
+  .glass-effect {
+    border-radius: 12px;
+    padding: 0.75rem;
+  }
+}
+
+/* Hover effect (optional) */
+.glass-effect:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
@@ -100,6 +126,29 @@ body {
     align-items: center;
     gap: 30px;
 }
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: lightgreen;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
 
 .preloader-logo {
     font-size: 3rem;

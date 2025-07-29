@@ -13,7 +13,7 @@ export default function HeroSection() {
       const y = (clientY / innerHeight) * 100;
 
       if (bgRef.current) {
-        bgRef.current.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 255, 120, 0.15), rgba(0, 0, 0, 0.9) 80%)`;
+        bgRef.current.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 255, 170, 0.18), rgba(10, 10, 25, 0.92) 80%)`;
       }
     };
 
@@ -23,7 +23,6 @@ export default function HeroSection() {
     document.body.appendChild(script);
 
     window.addEventListener("mousemove", handleMouseMove);
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.body.removeChild(script);
@@ -35,11 +34,11 @@ export default function HeroSection() {
       ref={bgRef}
       className="relative w-full min-h-screen flex flex-col justify-center items-center text-white px-6 py-16 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #0a0a0a 0%, #003300 100%)",
+        background: "linear-gradient(135deg, #0b0b13 0%, #003f2f 100%)",
       }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 z-0 opacity-20">
+      {/* Background Lines Pattern */}
+      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <pattern
@@ -51,13 +50,14 @@ export default function HeroSection() {
               patternUnits="userSpaceOnUse"
               patternTransform="rotate(-45)"
             >
-              <line x1="0" y1="0" x2="0" y2="10" stroke="#00ff83" strokeWidth="0.5" />
+              <line x1="0" y1="0" x2="0" y2="10" stroke="#00ffd5" strokeWidth="0.5" />
             </pattern>
           </defs>
           <rect x="0" y="0" width="100%" height="100%" fill="url(#diagonal-lines)" />
         </svg>
       </div>
 
+      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
         {/* Lordicon Animation */}
         <div className="mb-10">
@@ -69,12 +69,16 @@ export default function HeroSection() {
         </div>
 
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-          Building <span className="text-gray-400">World-Class</span> Sports Infrastructure
+          Building{" "}
+          <span className="bg-gradient-to-r from-teal-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
+            World-Class
+          </span>{" "}
+          Sports Infrastructure
         </h1>
 
         <p className="text-lg md:text-xl text-gray-300 max-w-3xl mb-10">
-          From design to execution, we deliver premium sports surfaces and infrastructure for schools, stadiums,
-          academies, and commercial spaces. Let’s bring your vision to life.
+          From design to execution, we deliver premium sports surfaces and infrastructure
+          for schools, stadiums, academies, and commercial spaces. Let’s bring your vision to life.
         </p>
 
         {/* Service Tags */}
@@ -90,11 +94,11 @@ export default function HeroSection() {
           ].map((service, index) => (
             <span
               key={index}
-              className={`px-5 py-2 rounded-full text-sm font-semibold border ${
-                index % 2 === 0
-                  ? "border-[#00ff83] text-[#00ff83]"
-                  : "border-gray-500 text-gray-400"
-              } hover:bg-[#00ff83] hover:text-black transition-colors cursor-pointer`}
+              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all cursor-pointer
+                ${index % 2 === 0
+                  ? "border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black"
+                  : "border-gray-600 text-gray-400 hover:bg-gray-400 hover:text-black"
+                }`}
             >
               {service}
             </span>

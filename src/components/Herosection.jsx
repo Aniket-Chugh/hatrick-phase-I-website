@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import * as THREE from 'three';
 
 export default function HeroSection() {
   const bgRef = useRef(null);
@@ -13,7 +12,7 @@ export default function HeroSection() {
       const y = (clientY / innerHeight) * 100;
 
       if (bgRef.current) {
-        bgRef.current.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 255, 170, 0.18), rgba(10, 10, 25, 0.92) 80%)`;
+        bgRef.current.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 255, 170, 0.15), rgba(5, 10, 20, 0.92) 80%)`;
       }
     };
 
@@ -34,26 +33,24 @@ export default function HeroSection() {
       ref={bgRef}
       className="relative w-full min-h-screen flex flex-col justify-center items-center text-white px-6 py-16 overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #0b0b13 0%, #003f2f 100%)",
+        background: "linear-gradient(135deg, #0a0f1a 0%, #002f25 100%)",
       }}
     >
-      {/* Background Lines Pattern */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+      {/* Updated Background Pattern */}
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
             <pattern
-              id="diagonal-lines"
-              x="0"
-              y="0"
+              id="lines-pattern"
               width="50"
-              height="3"
+              height="10"
               patternUnits="userSpaceOnUse"
-              patternTransform="rotate(-45)"
+              patternTransform="rotate(45)"
             >
-              <line x1="0" y1="0" x2="0" y2="10" stroke="#00ffd5" strokeWidth="0.5" />
+              <line x1="0" y1="0" x2="0" y2="10" stroke="#00ffd5" strokeWidth="0.3" />
             </pattern>
           </defs>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#diagonal-lines)" />
+          <rect x="0" y="0" width="100%" height="100%" fill="url(#lines-pattern)" />
         </svg>
       </div>
 

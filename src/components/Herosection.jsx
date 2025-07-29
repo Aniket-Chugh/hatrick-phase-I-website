@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import * as THREE from 'three';
 
 export default function HeroSection() {
   const bgRef = useRef(null);
@@ -35,7 +36,6 @@ export default function HeroSection() {
       className="relative w-full min-h-screen flex flex-col justify-center items-center text-white px-6 py-16 overflow-hidden"
       style={{
         background: "linear-gradient(135deg, #0a0a0a 0%, #003300 100%)",
-        boxShadow: "0 0 80px rgba(0, 255, 120, 0.3)",
       }}
     >
       {/* Background Pattern */}

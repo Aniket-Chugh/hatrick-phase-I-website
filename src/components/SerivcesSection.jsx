@@ -66,7 +66,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto">
         <h3 className="text-xl italic text-gray-400 mb-4">/Services</h3>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-<h2 className="text-4xl sm:text-6xl md:text-5xl lg:text-8xl font-light tracking-tight">
+<h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-8xl font-light tracking-tight">
             Certified <span className="font-semibold italic">Excellence</span>
           </h2>
           <div className="flex gap-6 text-sm font-medium mt-2 md:mt-0">

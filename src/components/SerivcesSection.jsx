@@ -4,28 +4,28 @@ import { ArrowUpRight } from "lucide-react";
 const services = [
   {
     title: "Furnaces",
-    image: "https://via.placeholder.com/300x200?text=Furnace",
+    image: "https://hatricksports.in/resources/images/Projects/turf2.jpg",
     color: "bg-yellow-400",
   },
   {
     title: "Central Air Conditioning",
     image: "https://via.placeholder.com/300x200?text=AC",
-    color: "bg-[#2c2c2c]",
+    color: "bg-yellow-400",
   },
   {
     title: "Tankless Water Heater",
     image: "https://via.placeholder.com/300x200?text=Heater",
-    color: "bg-[#2c2c2c]",
+    color: "bg-yellow-400",
   },
   {
     title: "Underfloor Heating System",
     image: "https://via.placeholder.com/300x200?text=Heating",
-    color: "bg-[#2c2c2c]",
+    color: "bg-yellow-400",
   },
   {
     title: "New House Plumbing",
     image: "https://via.placeholder.com/300x200?text=Plumbing",
-    color: "bg-[#2c2c2c]",
+    color: "bg-yellow-400",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function ServicesSection() {
     }
   };
 
-  const interval = setInterval(autoScroll, 30); // Speed of animation
+  const interval = setInterval(autoScroll, 30);
   return () => clearInterval(interval);
 }, []);
 
@@ -64,10 +64,9 @@ export default function ServicesSection() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <h3 className="text-xl italic text-gray-400 mb-4">/Services</h3>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-          <h2 className="text-8xl font-light tracking-tight">
+<h2 className="text-8xl sm:text-6xl md:text-5xl lg:text-4xl font-light tracking-tight">
             Certified <span className="font-semibold italic">Excellence</span>
           </h2>
           <div className="flex gap-6 text-sm font-medium mt-2 md:mt-0">
@@ -80,36 +79,43 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        {/* Auto Sliding Cards */}
         <div
           className="overflow-x-hidden py-4"
           ref={scrollRef}
         >
           <div className="flex space-x-6 w-max">
             {[...services, ...services].map((service, index) => (
-              <div
-                key={index}
-                className="relative min-w-[240px] sm:min-w-[280px] h-[300px] rounded-2xl overflow-hidden shadow-lg bg-white/5 border border-white/10 backdrop-blur-md"
-              >
-                {/* Background Image */}
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="absolute inset-0 w-full h-full object-cover opacity-30"
-                />
+           <div className="relative min-w-[240px] sm:min-w-[280px] h-[300px] rounded-[1.5rem] overflow-hidden shadow-lg bg-white/5 backdrop-blur-md">
+  {/* Background image */}
+  <img
+    src={service.image}
+    alt={service.title}
+    className="absolute inset-0 w-full h-full object-cover opacity-30"
+  />
 
-                {/* Content */}
-                <div className="relative z-10 p-4 h-full flex items-end justify-between">
-                  <h3 className="text-lg font-semibold">{service.title}</h3>
-                </div>
+  {/* Bottom corner cut with gradient background */}
+  <div
+    className="absolute bottom-0 right-0  w-16 h-16 rounded-tl-[1.5rem] z-10"
+    style={{
+      background: "linear-gradient(135deg, #0a0f1a 0%, #003f2f 100%)"
+    }}
+  />
 
-                {/* Floating Arrow Button */}
-                <div
-                  className={`absolute -bottom-4 -right-4 w-10 h-10 rounded-full ${service.color} flex items-center justify-center z-20 shadow-xl`}
-                >
-                  <ArrowUpRight className="w-4 h-4 text-black" />
-                </div>
-              </div>
+  {/* Floating circular button */}
+  <div
+    className={`absolute bottom-2 right-2 w-12 h-12 rounded-full ${service.color} flex items-center justify-center z-20`}
+  >
+    <ArrowUpRight className="w-4 h-4 text-black" />
+  </div>
+
+  {/* Text section */}
+  <div className="relative z-10 h-full flex flex-col justify-end p-4">
+    <h3 className=" font-semibold text-sm text-white">{service.title}</h3>
+  </div>
+</div>
+
+
+
             ))}
           </div>
         </div>

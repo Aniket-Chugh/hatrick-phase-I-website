@@ -9,12 +9,12 @@ const services = [
   },
   {
     title: "Central Air Conditioning",
-    image: "https://via.placeholder.com/300x200?text=AC",
+    image: "https://hatricksports.in/resources/images/Projects/turf3.jpg",
     color: "bg-yellow-400",
   },
   {
     title: "Tankless Water Heater",
-    image: "https://via.placeholder.com/300x200?text=Heater",
+    image: "https://hatricksports.in/resources/images/Projects/turf1.jpg",
     color: "bg-yellow-400",
   },
   {

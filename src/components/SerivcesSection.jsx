@@ -66,7 +66,7 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto">
         <h3 className="text-xl italic text-gray-400 mb-4">/Services</h3>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-<h2 className="text-8xl sm:text-6xl md:text-5xl lg:text-4xl font-light tracking-tight">
+<h2 className="text-3xl sm:text-6xl md:text-5xl lg:text-8xl font-light tracking-tight">
             Certified <span className="font-semibold italic">Excellence</span>
           </h2>
           <div className="flex gap-6 text-sm font-medium mt-2 md:mt-0">
@@ -86,14 +86,12 @@ export default function ServicesSection() {
           <div className="flex space-x-6 w-max">
             {[...services, ...services].map((service, index) => (
            <div className="relative min-w-[240px] sm:min-w-[280px] h-[300px] rounded-[1.5rem] overflow-hidden shadow-lg bg-white/5 backdrop-blur-md">
-  {/* Background image */}
   <img
     src={service.image}
     alt={service.title}
     className="absolute inset-0 w-full h-full object-cover opacity-30"
   />
 
-  {/* Bottom corner cut with gradient background */}
   <div
     className="absolute bottom-0 right-0  w-16 h-16 rounded-tl-[1.5rem] z-10"
     style={{
@@ -101,14 +99,12 @@ export default function ServicesSection() {
     }}
   />
 
-  {/* Floating circular button */}
   <div
     className={`absolute bottom-2 right-2 w-12 h-12 rounded-full ${service.color} flex items-center justify-center z-20`}
   >
     <ArrowUpRight className="w-4 h-4 text-black" />
   </div>
 
-  {/* Text section */}
   <div className="relative z-10 h-full flex flex-col justify-end p-4">
     <h3 className=" font-semibold text-sm text-white">{service.title}</h3>
   </div>

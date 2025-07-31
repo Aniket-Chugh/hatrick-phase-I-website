@@ -61,14 +61,25 @@ useEffect(() => {
       <div className="max-w-7xl mx-auto">
         <h3 className="text-xl italic text-gray-400 mb-4">/Services</h3>
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-          <h2 className="text-3xl sm:text-6xl md:text-5xl lg:text-8xl font-light tracking-tight">
+          <h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-8xl font-light tracking-tight">
             Certified <span className="font-semibold italic">Excellence</span>
           </h2>
           <div className="flex gap-6 text-sm font-medium mt-2 md:mt-0">
 
-            <a href="#" className="text-yellow-400 hover:underline">
-              Call For Booking →
-            </a>
+           <a
+  href="tel:+91XXXXXXXXXX" // Replace with your booking phone number
+  className="group flex items-center gap-2 text-black px-4 py-2 rounded-full  mt-6 hover:bg-yellow-300 transition duration-300"
+
+  style={{
+        background: "linear-gradient(135deg, yellow 0%, #003f2f 100%)",
+      }}
+
+>
+  Call For Booking
+  <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center">
+    <ArrowUpRight className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+  </span>
+</a>
           </div>
         </div>
 

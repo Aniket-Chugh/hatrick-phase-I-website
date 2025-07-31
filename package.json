@@ -13,6 +13,7 @@
     "@headlessui/react": "^2.2.6",
     "@lordicon/react": "^1.11.0",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.12",
     "gsap": "^3.13.0",
     "lucide-react": "^0.532.0",
     "react": "^19.1.0",

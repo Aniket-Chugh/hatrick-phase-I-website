@@ -101,7 +101,7 @@ export default function HeroSection() {
 
         <div className="mt-4 text-sm text-gray-400">
           Trusted by <span className="text-teal-300 font-semibold">50+ Institutions</span> | ISO Certified | 8+ Years Experience
-           <div className="w-44 h-1 mx-auto mt-3 bg-gradient-to-r from-pink-500 via-yellow-400 to-green-400 rounded-full transition-all duration-700 ease-in-out"></div>
+           <div className="w-44 h-[3px] mx-auto mt-3 bg-gradient-to-r from-teal-400 via-green-400 to-yellow-400 rounded-full transition-all duration-700 ease-in-out" ></div>
 
         </div>
       </div>

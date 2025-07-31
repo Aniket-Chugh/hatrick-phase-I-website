@@ -7,6 +7,7 @@ import HeroSection from "./components/Herosection";
 import IndiaMapSection from "./components/Aboutus";
 import ServicesSection from "./components/SerivcesSection";
 
+
 gsap.registerPlugin(ScrollSmoother);
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
           <HeroSection />
           <IndiaMapSection />
           <ServicesSection />
+
         </div>
       </div>
     </>

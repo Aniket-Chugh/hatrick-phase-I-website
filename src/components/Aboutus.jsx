@@ -33,14 +33,11 @@ export default function AboutUsSection() {
           </button>
         </div>
 
-        {/* Right Section */}
         <div className="relative">
-          {/* Big Blurred Number Background */}
           <div className="absolute -top-10 -right-4 text-[120px] font-extrabold text-green-600/10 blur-sm select-none pointer-events-none z-0">
             24
           </div>
 
-          {/* Feature Cards */}
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="bg-white/5 border border-green-300/20 rounded-xl p-6 backdrop-blur-md shadow-lg">
               <h4 className="text-xl font-semibold text-green-400 mb-2">

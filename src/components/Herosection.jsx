@@ -35,7 +35,6 @@ export default function HeroSection() {
         background: "linear-gradient(135deg, #0a0f1a 0%, #002f25 100%)",
       }}
     >
-      {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
@@ -53,9 +52,7 @@ export default function HeroSection() {
         </svg>
       </div>
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
-        {/* Lordicon */}
         <div className="mb-10">
           <lord-icon
             src="https://cdn.lordicon.com/gkiywisz.json"
@@ -64,7 +61,6 @@ export default function HeroSection() {
           ></lord-icon>
         </div>
 
-        {/* Hero Text */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
           Building{" "}
           <span className="bg-gradient-to-r from-teal-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
@@ -78,7 +74,6 @@ export default function HeroSection() {
           for schools, stadiums, academies, and commercial spaces. Let's bring your vision to life.
         </p>
 
-        {/* ✅ Quick Services Tags */}
         <div className="flex flex-wrap justify-center gap-3 mb-8">
           {[
             "Turf Installation",
@@ -104,7 +99,6 @@ export default function HeroSection() {
         </div>
 
 
-        {/* ✅ Trust Badge + Funky Line */}
         <div className="mt-4 text-sm text-gray-400">
           Trusted by <span className="text-teal-300 font-semibold">50+ Institutions</span> | ISO Certified | 8+ Years Experience
            <div className="w-44 h-1 mx-auto mt-3 bg-gradient-to-r from-pink-500 via-yellow-400 to-green-400 rounded-full transition-all duration-700 ease-in-out"></div>

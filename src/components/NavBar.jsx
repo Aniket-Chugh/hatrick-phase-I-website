@@ -57,7 +57,6 @@ export default function Preloader() {
         background: "linear-gradient(135deg, #0a0f1a 0%, #002f25 100%)",
       }}>
 
-      {/* Preloader */}
       <div className="preloader fixed top-0 left-0 w-full h-screen linear-gradient(135deg, #0b0b13 0%, #003f2f 100%) z-50 flex flex-col justify-center items-center transition-colors duration-500">
         <div className="preloader-logo text-[#00695c] text-4xl font-bold drop-shadow-md">
           Hatrick Sports<span className="text-[#ff4081]">.</span>
@@ -67,7 +66,6 @@ export default function Preloader() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         ref={menuRef}
         className="fixed top-0 right-0 h-full w-3/4 bg-white/90 backdrop-blur-md shadow-lg p-6 z-40 lg:hidden text-white"
@@ -98,8 +96,6 @@ export default function Preloader() {
         </div>
       </div>
 
-      {/* NavBar */}
-   {/* NAVBAR */}
       <nav
         className={`fixed top-0 w-full z-50 px-4 py-3 glass-effect transition-all duration-300 flex items-center justify-around ${
           isScrolled

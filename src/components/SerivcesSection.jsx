@@ -31,28 +31,25 @@ const services = [
 
 export default function ServicesSection() {
   const scrollRef = useRef(null);
+useEffect(() => {
+  const slider = scrollRef.current;
+  let scrollAmount = 0;
+  const slideSpeed = 1;
 
-  useEffect(() => {
-    const slider = scrollRef.current;
-    let scrollAmount = 0;
-    const slideSpeed = 1;
-
-    const autoScroll = () => {
-      if (slider) {
-        scrollAmount += slideSpeed;
-        if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
-          scrollAmount = 0;
-        }
-        slider.scrollTo({
-          left: scrollAmount,
-          behavior: "smooth",
-        });
+  const autoScroll = () => {
+    if (slider) {
+      scrollAmount += slideSpeed;
+      if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
+        scrollAmount = 0;
       }
-    };
+      slider.scrollLeft = scrollAmount;
+    }
+  };
 
-    const interval = setInterval(autoScroll, 30);
-    return () => clearInterval(interval);
-  }, []);
+  const interval = setInterval(autoScroll, 30);
+  return () => clearInterval(interval);
+}, []);
+
 
   return (
     <section

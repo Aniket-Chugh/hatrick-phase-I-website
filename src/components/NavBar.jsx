@@ -9,7 +9,17 @@ export default function Preloader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef(null);
 
-  // Preloader animation
+   const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    let timer;
+    if (progress < 100) {
+      timer = setTimeout(() => setProgress(progress + 1), 15); // smoother load
+    }
+    return () => clearTimeout(timer);
+  }, [progress]);
+
+  // Animate Preloader
   useEffect(() => {
     const tl = gsap.timeline();
     tl.to(".preloader-bar", {
@@ -29,30 +39,20 @@ export default function Preloader() {
       });
   }, []);
 
-  // Mobile menu animation
+  // Animate Mobile Menu
   useEffect(() => {
     if (menuRef.current) {
-      if (isOpen) {
-        gsap.to(menuRef.current, {
-          x: 0,
-          opacity: 1,
-          display: "block",
-          duration: 0.4,
-          ease: "power3.out",
-        });
-      } else {
-        gsap.to(menuRef.current, {
-          x: "100%",
-          opacity: 0,
-          display: "none",
-          duration: 0.4,
-          ease: "power3.in",
-        });
-      }
+      gsap.to(menuRef.current, {
+        x: isOpen ? 0 : "100%",
+        opacity: isOpen ? 1 : 0,
+        display: isOpen ? "block" : "none",
+        duration: 0.4,
+        ease: isOpen ? "power3.out" : "power3.in",
+      });
     }
   }, [isOpen]);
 
-  // Navbar scroll effect
+  // Scroll shadow on Navbar
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -70,12 +70,20 @@ export default function Preloader() {
     >
       {/* Preloader */}
       <div className="preloader fixed top-0 left-0 w-full h-screen z-50 flex flex-col justify-center items-center bg-gradient-to-br from-[#0b0b13] to-[#003f2f]">
-        <div className="text-[#00695c] text-4xl font-bold drop-shadow-md">
-          Hatrick Sports<span className="text-[#ff4081]">.</span>
-        </div>
-        <div className="w-1/2 h-2 bg-white border border-[#80cbc4] mt-4 rounded-full overflow-hidden shadow-sm">
-          <div className="preloader-bar h-full bg-[#26a69a] transition-all duration-1000 ease-out"></div>
-        </div>
+       <div className="preloader fixed top-0 left-0 w-full h-screen z-[9999] flex flex-col justify-center items-center bg-gradient-to-br from-[#0b0b13] to-[#003f2f] transition-all duration-700">
+      <div className="text-[#00e0b3] text-4xl font-extrabold tracking-wide drop-shadow-md">
+        Hatrick Sports<span className="text-[#ff4081]">.</span>
+      </div>
+
+      <div className="w-[60%] max-w-[400px] h-2 mt-6 bg-white/10 border border-[#26a69a] rounded-full overflow-hidden shadow-inner">
+        <div
+          className="h-full bg-[#26a69a] transition-all duration-200 ease-out"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+
+      <div className="mt-3 text-white/70 text-sm font-mono">{progress}%</div>
+    </div>
       </div>
 
       {/* Mobile Menu */}
@@ -134,9 +142,9 @@ export default function Preloader() {
           ))}
         </div>
 
-        {/* Contact CTA */}
+        {/* CTA Button */}
         <a
-          href="#_"
+          href="#contact"
           className="hidden lg:inline-flex relative items-center justify-center px-4 py-2 overflow-hidden transition duration-300 ease-out border-2 border-[#89C7E7] rounded-full shadow-md group text-sm sm:text-base text-[#F97316]"
         >
           <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black -translate-x-full bg-gradient-to-r from-teal-400 to-green-400 group-hover:translate-x-0 transition duration-300 ease"></span>
@@ -146,6 +154,7 @@ export default function Preloader() {
           <span className="relative invisible">Contact Us</span>
         </a>
 
+        {/* Mobile Toggle */}
         <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white z-50">
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

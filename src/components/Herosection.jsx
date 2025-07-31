@@ -7,7 +7,6 @@ export default function HeroSection() {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
       const { innerWidth, innerHeight } = window;
-
       const x = (clientX / innerWidth) * 100;
       const y = (clientY / innerHeight) * 100;
 
@@ -36,7 +35,7 @@ export default function HeroSection() {
         background: "linear-gradient(135deg, #0a0f1a 0%, #002f25 100%)",
       }}
     >
-      {/* Updated Background Pattern */}
+      {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
@@ -56,15 +55,16 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
-        {/* Lordicon Animation */}
+        {/* Lordicon */}
         <div className="mb-10">
           <lord-icon
             src="https://cdn.lordicon.com/gkiywisz.json"
             trigger="hover"
-            style={{ width: "250px", height: "250px" }}
+            style={{ width: "200px", height: "200px" }}
           ></lord-icon>
         </div>
 
+        {/* Hero Text */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
           Building{" "}
           <span className="bg-gradient-to-r from-teal-400 via-green-400 to-yellow-400 bg-clip-text text-transparent">
@@ -73,33 +73,42 @@ export default function HeroSection() {
           Sports Infrastructure
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-300 max-w-3xl mb-10">
+        <p className="text-lg md:text-xl text-gray-300 max-w-3xl mb-8">
           From design to execution, we deliver premium sports surfaces and infrastructure
-          for schools, stadiums, academies, and commercial spaces. Let’s bring your vision to life.
+          for schools, stadiums, academies, and commercial spaces. Let's bring your vision to life.
         </p>
 
-        {/* Service Tags */}
-        <div className="flex flex-wrap justify-center gap-4">
+        {/* ✅ Quick Services Tags */}
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {[
-            "Synthetic Courts",
-            "Running Tracks",
-            "Indoor Arenas",
             "Turf Installation",
+            "Synthetic Courts",
+            "Indoor Arenas",
+            "Running Tracks",
             "Lighting Systems",
             "Sports Flooring",
-            "Turnkey Solutions",
+            "Turnkey Projects",
           ].map((service, index) => (
             <span
               key={index}
-              className={`px-5 py-2 rounded-full text-sm font-semibold border transition-all cursor-pointer
-                ${index % 2 === 0
+              className={`px-4 py-2 rounded-full text-sm font-medium border transition-all cursor-pointer
+              ${
+                index % 2 === 0
                   ? "border-teal-400 text-teal-300 hover:bg-teal-400 hover:text-black"
                   : "border-gray-600 text-gray-400 hover:bg-gray-400 hover:text-black"
-                }`}
+              }`}
             >
               {service}
             </span>
           ))}
+        </div>
+
+
+        {/* ✅ Trust Badge + Funky Line */}
+        <div className="mt-4 text-sm text-gray-400">
+          Trusted by <span className="text-teal-300 font-semibold">50+ Institutions</span> | ISO Certified | 8+ Years Experience
+           <div className="w-44 h-1 mx-auto mt-3 bg-gradient-to-r from-pink-500 via-yellow-400 to-green-400 rounded-full transition-all duration-700 ease-in-out"></div>
+
         </div>
       </div>
     </section>

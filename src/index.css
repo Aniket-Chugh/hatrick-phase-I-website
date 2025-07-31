@@ -69,25 +69,38 @@
   overflow: hidden;
 }
 
-/* index.css */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
+
+
+
+
+/* Remove scrollbars */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
+html {
   scrollbar-width: none; /* Firefox */
 }
 
+/* Global Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #0b0b13; /* Optional: match your theme */
+  font-family: "Inter", sans-serif;
+  overflow: hidden; /* Needed for GSAP ScrollSmoother */
+}
 
+/* Smooth Scrolling Container */
+#smooth-wrapper {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
 
-body {
-      scroll-behavior: smooth;
-
-    height: 100%;
-    width: 100%;
-    background-color: var(--dark-bg);
-    overflow-x: hidden;
-    transition: background 0.3s ease;
+#smooth-content {
+  will-change: transform;
 }
 
 

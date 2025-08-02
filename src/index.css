@@ -27,6 +27,13 @@
     --transition-smooth: cubic-bezier(0.33, 1, 0.68, 1);
 }
 
+
+.project-panel {
+  height: 100vh;
+}
+
+
+
 .hero-background {
   position: absolute;
   top: 0;
@@ -34,8 +41,8 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  overflow: auto; /* ✅ Required for GSAP scroll to work */
 
-  overflow: hidden;
 }
 .gradient-sphere {
   position: absolute;

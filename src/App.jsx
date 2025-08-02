@@ -6,7 +6,9 @@ import Preloader from "./components/NavBar";
 import HeroSection from "./components/Herosection";
 import IndiaMapSection from "./components/Aboutus";
 import ServicesSection from "./components/SerivcesSection";
-
+import AnimatedSportsSection from "./components/Project";
+import Services from "./components/Project";
+import SportsServices from "./components/Project";
 
 gsap.registerPlugin(ScrollSmoother);
 
@@ -27,13 +29,12 @@ const App = () => {
   return (
     <>
       <Preloader />
-
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <HeroSection />
           <IndiaMapSection />
           <ServicesSection />
-
+       <SportsServices></SportsServices>
         </div>
       </div>
     </>

@@ -63,10 +63,8 @@ export default function Preloader() {
 
   return (
     <div
-      className="font-[Poppins] relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #0a0f1a 0%, #002f25 100%)",
-      }}
+      className="font-[Poppins] relative overflow-hidden text-black"
+
     >
       {/* Preloader */}
       <div className="preloader fixed top-0 left-0 w-full h-screen z-50 flex flex-col justify-center items-center bg-gradient-to-br from-[#0b0b13] to-[#003f2f]">
@@ -89,7 +87,7 @@ export default function Preloader() {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 h-full w-3/4 bg-[#0a0f1a] text-white z-50 p-6 transform translate-x-full opacity-0"
+        className="fixed top-0 right-0 h-full w-3/4 bg-[#0a0f1a] text-black z-50 p-6 transform translate-x-full opacity-0"
         style={{ display: "none" }}
       >
         <div className="flex justify-between items-center mb-6">
@@ -119,13 +117,14 @@ export default function Preloader() {
         className={`fixed top-0 w-full z-50 px-4 py-3 transition-all duration-300 flex items-center justify-around ${
           isScrolled ? "bg-transparent" : "bg-transparent"
         }`}
+
       >
         <Link to="/">
           <img
-            src={image}
-            alt="Hatrick Sports Logo"
-            className="w-28 sm:w-36 object-contain drop-shadow-lg -mt-2"
-          />
+        src={image}
+        alt="Hatrick Sports Logo"
+        className="w-28 sm:w-36 object-contain -mt-2 drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+      />
         </Link>
 
         {/* Desktop Nav */}
@@ -134,10 +133,10 @@ export default function Preloader() {
             <Link
               key={i}
               to={`/${text.toLowerCase().replace(/\s/g, "")}`}
-              className="text-white group relative"
+              className="text-[#F4A300] group relative"
             >
               {text}
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#0D98BA] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#F4A300]/25 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           ))}
         </div>
@@ -147,8 +146,8 @@ export default function Preloader() {
           href="#contact"
           className="hidden lg:inline-flex relative items-center justify-center px-4 py-2 overflow-hidden transition duration-300 ease-out border-2 border-[#89C7E7] rounded-full shadow-md group text-sm sm:text-base text-[#F97316]"
         >
-          <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black -translate-x-full bg-gradient-to-r from-teal-400 to-green-400 group-hover:translate-x-0 transition duration-300 ease"></span>
-          <span className="absolute w-full h-full flex items-center justify-center text-white group-hover:translate-x-full transition-all duration-300 ease">
+          <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black -translate-x-full bg-gradient-to-r from-teal-400 to-green-400 group-hover:translate-x-0  transition duration-300 ease"></span>
+          <span className="absolute w-full h-full flex items-center justify-center text-[#F4A300]group-hover:translate-x-full transition-all duration-300 ease">
             Contact Us
           </span>
           <span className="relative invisible">Contact Us</span>

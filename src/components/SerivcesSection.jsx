@@ -1,5 +1,4 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const services = [
@@ -31,47 +30,43 @@ const services = [
 
 export default function SportsServicesSection() {
   return (
-    <section
-      className="w-full text-white px-6 md:px-16 py-24"
-     style={{
-        background: "linear-gradient(135deg, #0a0f1a 0%, #002f25 100%)",
-      }}
-    >
+    <section className="w-full px-6 md:px-16 py-32 bg-gradient-to-br from-[#f0fdf4] via-[#ecfdf5] to-[#f6fff9] text-gray-800">
       <div className="max-w-7xl mx-auto">
-        <h3 className="text-xl italic text-gray-400 mb-4">/Services</h3>
+        {/* Title */}
+        <h3 className="text-lg italic text-green-600 mb-3">/Services</h3>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-          <h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-8xl font-light tracking-tight leading-tight">
-            Elevating Sports with{" "}
-            <span className="font-semibold italic text-yellow-400">Excellence</span>
-          </h2>
-        </div>
+        {/* Headline */}
+        <h2 className="text-4xl sm:text-5xl font-light tracking-tight leading-tight mb-8">
+          Elevating Sports with{" "}
+          <span className="font-semibold italic text-[#F4A300]">Excellence</span>
+        </h2>
 
-        <p className="text-gray-300 max-w-2xl mb-10 text-base sm:text-lg">
-          Our team specializes in world-class sports infrastructure — from stadiums and turf installations to swimming pools and gym setups. Every project is a symbol of precision engineering, premium quality, and unwavering dedication to athletic excellence.
+        {/* Description */}
+        <p className="text-gray-700 max-w-2xl mb-12 text-base sm:text-lg leading-relaxed">
+          We craft world-class sports infrastructure — from stadiums and turf setups
+          to pools and velodromes. Every project is precision-built with premium materials and care.
         </p>
 
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-12">
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.04, rotate: 0.5 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="relative overflow-hidden rounded-2xl shadow-xl group cursor-pointer"
+              className="relative rounded-2xl overflow-hidden bg-white border border-green-100 shadow-md hover:shadow-lg transition"
             >
               <img
                 src={service.image}
                 alt={service.title}
-                className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
+                className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-500 backdrop-blur-sm" />
-
-              <div className="absolute bottom-5 left-5">
-                <h3 className="text-2xl font-bold text-white drop-shadow-lg">
+              <div className="absolute inset-0 bg-white/30 backdrop-blur-sm hover:bg-white/50 transition duration-500" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <h3 className="text-lg sm:text-xl font-semibold text-gray-800">
                   {service.title}
                 </h3>
-                <p className="text-sm text-gray-300 mt-1 max-w-xs">
+                <p className="text-sm text-gray-600 mt-1">
                   Engineered with precision. Built to inspire performance.
                 </p>
               </div>

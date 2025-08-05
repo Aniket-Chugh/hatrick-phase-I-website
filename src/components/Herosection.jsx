@@ -15,7 +15,7 @@ export default function HeroSection() {
   useEffect(() => {
     const images = imagesRef.current;
 
-    // Reset all images
+
     gsap.set(images, { autoAlpha: 0, scale: 1.1 });
 
     // Background Image Slideshow
@@ -75,7 +75,7 @@ export default function HeroSection() {
       {/* Background Slideshow */}
       <div className="absolute inset-0 z-0">
         {[
-          "https://plus.unsplash.com/premium_photo-1684446464405-71867f88356b?w=500&auto=format&fit=crop&q=60",
+          "https://images.unsplash.com/photo-1728536909253-a84ce4750d33?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "https://images.unsplash.com/photo-1646343251574-a7b03ee3dbaf?w=500&auto=format&fit=crop&q=60",
           "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=500&auto=format&fit=crop&q=60",
         ].map((src, index) => (
@@ -100,7 +100,7 @@ export default function HeroSection() {
   </h1>
 
   {/* Rotating Text */}
-  <h2 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight text-yellow-300">
+  <h2 className="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight ">
     <span ref={rotatingTextRef}>
       We Build World-Class Turfs
     </span>

@@ -9,6 +9,10 @@ import ServicesSection from "./components/SerivcesSection";
 import AnimatedSportsSection from "./components/Project";
 import Services from "./components/Project";
 import SportsServices from "./components/Project";
+import ReelCarousel from "./components/ContentShowing";
+import ClientsSection from "./components/ClientPage";
+import ContactPage from "./components/CTA";
+import Footer from "./components/Footer";
 
 gsap.registerPlugin(ScrollSmoother);
 
@@ -35,6 +39,10 @@ const App = () => {
           <IndiaMapSection />
           <ServicesSection />
        <SportsServices></SportsServices>
+       <ReelCarousel></ReelCarousel>
+       <ClientsSection></ClientsSection>
+       <ContactPage></ContactPage>
+       <Footer></Footer>
         </div>
       </div>
     </>

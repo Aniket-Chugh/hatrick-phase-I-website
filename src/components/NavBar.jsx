@@ -141,17 +141,32 @@ export default function Preloader() {
           ))}
         </div>
 
-        {/* CTA Button */}
-        <a
-          href="#contact"
-          className="hidden lg:inline-flex relative items-center justify-center px-4 py-2 overflow-hidden transition duration-300 ease-out border-2 border-[#89C7E7] rounded-full shadow-md group text-sm sm:text-base text-[#F97316]"
-        >
-          <span className="absolute inset-0 flex items-center justify-center w-full h-full text-black -translate-x-full bg-gradient-to-r from-teal-400 to-green-400 group-hover:translate-x-0  transition duration-300 ease"></span>
-          <span className="absolute w-full h-full flex items-center justify-center text-[#F4A300]group-hover:translate-x-full transition-all duration-300 ease">
-            Contact Us
-          </span>
-          <span className="relative invisible">Contact Us</span>
-        </a>
+        {/* CTA Buttons */}
+<div className="hidden lg:flex items-center gap-4">
+
+
+  {/* 📞 Call Us Button */}
+  <a
+    href="tel:+919876543210"
+    className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold shadow-md hover:shadow-lg hover:animate-pulse transition duration-300"
+  >
+    <svg
+      className="w-5 h-5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.14 3.4a1 1 0 01-.27 1.1L9.3 9.3a11.05 11.05 0 005.4 5.4l1.12-1.12a1 1 0 011.1-.27l3.4 1.14a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C10.61 21 3 13.39 3 5v0z"
+      />
+    </svg>
+    +91 98765 43210
+  </a>
+</div>
+
 
         {/* Mobile Toggle */}
         <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-white z-50">

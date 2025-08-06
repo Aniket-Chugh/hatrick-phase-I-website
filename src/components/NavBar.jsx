@@ -148,7 +148,7 @@ export default function Preloader() {
 
   {/* 📞 Call Us Button */}
  <a
-  href="https://wa.me/918660218317?text=Hi%20Team%2C%20I%20am%20interested%20in%20your%20services"
+  href="https://wa.me/918660218317?text=Hi%20HatrickSports%2C%20I%20am%20interested%20in%20your%20services"
   target="_blank"
   rel="noopener noreferrer"
   className="bg-yellow-300 flex items-center justify-center gap-3 hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300"

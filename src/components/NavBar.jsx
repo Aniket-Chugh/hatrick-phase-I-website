@@ -3,6 +3,8 @@ import gsap from "gsap";
 import image from "../assets/20250722_234551.png";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { MessageCircle } from "lucide-react"; // closest icon to WhatsApp in Lucide
+
 
 export default function Preloader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +21,6 @@ export default function Preloader() {
     return () => clearTimeout(timer);
   }, [progress]);
 
-  // Animate Preloader
   useEffect(() => {
     const tl = gsap.timeline();
     tl.to(".preloader-bar", {
@@ -146,25 +147,16 @@ export default function Preloader() {
 
 
   {/* 📞 Call Us Button */}
-  <a
-    href="tel:+919876543210"
-    className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold shadow-md hover:shadow-lg hover:animate-pulse transition duration-300"
-  >
-    <svg
-      className="w-5 h-5"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.14 3.4a1 1 0 01-.27 1.1L9.3 9.3a11.05 11.05 0 005.4 5.4l1.12-1.12a1 1 0 011.1-.27l3.4 1.14a1 1 0 01.68.95V19a2 2 0 01-2 2h-1C10.61 21 3 13.39 3 5v0z"
-      />
-    </svg>
-    +91 98765 43210
-  </a>
+ <a
+  href="https://wa.me/918660218317?text=Hi%20Team%2C%20I%20am%20interested%20in%20your%20services"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="bg-yellow-300 flex items-center justify-center gap-3 hover:bg-yellow-400 text-black font-bold py-3 px-8 rounded-lg text-lg shadow-md transition duration-300"
+>
+  <MessageCircle className="w-5 h-5" />
+  WhatsApp Us
+</a>
+
 </div>
 
 

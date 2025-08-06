@@ -27,7 +27,7 @@ export default function InstaReelSection() {
     <section className="w-full px-6 md:px-16 py-24 bg-gradient-to-br from-[#e3f8ec] via-[#d0f1e3] to-[#c0ebd9] text-gray-800">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <h3 className="text-xl italic text-green-800 mb-4 tracking-wide">/Reels</h3>
+        <h3 className="text-xl italic text-green-800 mb-4 tracking-wide">/Content</h3>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
           <h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-light tracking-tight leading-tight">

@@ -62,7 +62,7 @@ export default function SportsServicesSection() {
                 alt={service.title}
                 className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-black/10 backdrop-blur-[3px] group-hover:bg-black/20 transition duration-500 z-10" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition duration-500 z-10" />
               <div className="absolute bottom-6 left-6 right-6 z-20">
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 drop-shadow">
                   {service.title}

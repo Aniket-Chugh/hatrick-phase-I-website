@@ -112,9 +112,9 @@ export default function ServicesSection() {
                 />
                 <div className="absolute inset-0 bg-black/30  z-0" />
 
-                <div className="absolute bottom-0 right-0 w-16 h-16 rounded-tl-[1.5rem] z-10 bg-white" />
+                <div className="absolute bottom-0 right-0 w-16 h-16 rounded-tl-[1.5rem] z-10 bg-gradient-to-br from-[#e3f8ec] via-[#d0f1e3] to-[#c0ebd9] text-gray-800 " />
                 <div
-                  className={`absolute bottom-2 right-2 w-12 h-12 rounded-full ${service.color} flex items-center justify-center z-20 shadow-md`}
+                  className={`absolute bottom-2 right-2 w-12 h-12 rounded-full ${service.color} flex items-center justify-center z-20 shadow-md `}
                 >
                   <ArrowUpRight className="w-4 h-4 text-black" />
                 </div>

@@ -59,23 +59,24 @@ export default function ServicesSection() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <h3 className="text-xl italic text-gray-400 mb-4">/Projects</h3>
+        <h3 className="text-xl italic text-gray-400 mb-4 tracking-wide">/Projects</h3>
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
           <h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-light tracking-tight leading-tight">
-            Our <span className="font-semibold italic text-yellow-400">Pride-Built Projects</span>
+            Our{" "}
+            <span className="font-semibold italic text-yellow-400">Pride-Built Projects</span>
           </h2>
 
           <a
             href="tel:+91XXXXXXXXXX"
             className="group flex items-center gap-2 text-black px-5 py-2 rounded-full mt-4 hover:bg-yellow-300 transition duration-300"
             style={{
-              background: "linear-gradient(135deg, yellow 0%, #003f2f 100%)",
+              background: "linear-gradient(135deg, #facc15 0%, #004432 100%)",
             }}
           >
             Call For Booking
             <span className="w-8 h-8 rounded-full bg-black flex items-center justify-center">
-              <ArrowUpRight className="w-4 h-4 text-yellow-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              <ArrowUpRight className="w-4 h-4 text-yellow-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
             </span>
           </a>
         </div>
@@ -86,6 +87,7 @@ export default function ServicesSection() {
           project is a testament to our promise of quality and commitment to excellence.
         </p>
 
+        {/* Auto-scroll projects */}
         <div className="overflow-x-hidden py-4" ref={scrollRef}>
           <div className="flex space-x-6 w-max">
             {[...services, ...services].map((service, index) => (
@@ -97,7 +99,11 @@ export default function ServicesSection() {
                   src={service.image}
                   alt={`Service - ${service.title}`}
                   loading="lazy"
-                  className="absolute inset-0 w-full h-full object-cover opacity-40"
+                  className="absolute inset-0 w-full h-full object-cover opacity-30"
+                />
+
+                <div
+                  className="absolute inset-0 bg-black/40 backdrop-blur-sm transition duration-500 z-0"
                 />
 
                 <div
@@ -108,7 +114,7 @@ export default function ServicesSection() {
                 />
 
                 <div
-                  className={`absolute bottom-2 right-2 w-12 h-12 rounded-full ${service.color} flex items-center justify-center z-20`}
+                  className={`absolute bottom-2 right-2 w-12 h-12 rounded-full ${service.color} flex items-center justify-center z-20 shadow-md`}
                 >
                   <ArrowUpRight className="w-4 h-4 text-black" />
                 </div>

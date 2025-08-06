@@ -3,7 +3,7 @@ import React from "react";
 export default function AboutUsSection() {
   return (
     <section
-      className="w-full  px-6 md:px-16 py-24 bg-white text-black"
+      className="w-full  px-6 md:px-16 py-24 bg-gradient-to-br from-[#f0fdf4] via-[#ecfdf5] to-[#f6fff9] text-gray-800 "
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10">
         <div className="relative z-10">

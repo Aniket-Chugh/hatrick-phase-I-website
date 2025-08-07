@@ -36,7 +36,7 @@ export default function SportsServicesSection() {
         <h3 className="text-lg italic text-green-700 mb-3 tracking-wide">/Services</h3>
 
         {/* Headline */}
-        <h2 className="text-4xl sm:text-8xl font-light tracking-tight leading-tight mb-8">
+        <h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-light tracking-tight leading-tight mb-8">
           Elevating Sports with{" "}
           <span className="font-semibold italic text-[#F4A300]">Excellence</span>
         </h2>

@@ -88,7 +88,7 @@ export default function Preloader() {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 right-0 h-full w-3/4 bg-[#0a0f1a] text-black z-50 p-6 transform translate-x-full opacity-0"
+        className="fixed top-0 right-0 h-full w-3/4 bg-gradient-to-br from-[#f0fdf4] via-[#ecfdf5] to-[#f6fff9] text-gray-800  z-50 p-6 transform translate-x-full opacity-0"
         style={{ display: "none" }}
       >
         <div className="flex justify-between items-center mb-6">

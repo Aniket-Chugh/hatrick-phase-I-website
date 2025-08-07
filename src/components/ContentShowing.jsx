@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 
 const reels = [
@@ -46,7 +46,7 @@ const reels = [
 
 export default function ReelSliderSection() {
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [muted, setMuted] = useState(true);
+  const [mutedStates, setMutedStates] = useState(reels.map(() => true));
   const sliderRef = useRef(null);
 
   const scrollSlider = (direction) => {
@@ -57,6 +57,12 @@ export default function ReelSliderSection() {
         behavior: "smooth",
       });
     }
+  };
+
+  const toggleMute = (index) => {
+    const newStates = [...mutedStates];
+    newStates[index] = !newStates[index];
+    setMutedStates(newStates);
   };
 
   return (
@@ -108,7 +114,7 @@ export default function ReelSliderSection() {
               >
                 <video
                   src={reel.videoUrl}
-                  muted={muted}
+                  muted={mutedStates[index]}
                   loop
                   autoPlay
                   className="object-cover w-full h-full"
@@ -117,10 +123,10 @@ export default function ReelSliderSection() {
                   className="absolute top-2 right-2 text-white bg-black/50 rounded-full p-1 z-10"
                   onClick={(e) => {
                     e.stopPropagation();
-                    setMuted(!muted);
+                    toggleMute(index);
                   }}
                 >
-                  {muted ? <VolumeX /> : <Volume2 />}
+                  {mutedStates[index] ? <VolumeX /> : <Volume2 />}
                 </button>
 
                 <div className="absolute bottom-0 left-0 p-3 text-white bg-gradient-to-t from-black via-black/40 to-transparent w-full space-y-1">
@@ -139,16 +145,16 @@ export default function ReelSliderSection() {
             <div className="relative w-[90vw] max-w-[400px] aspect-[9/16] bg-black rounded-xl overflow-hidden">
               <video
                 src={reels[selectedIndex].videoUrl}
-                muted={muted}
+                muted={mutedStates[selectedIndex]}
                 autoPlay
                 loop
                 className="object-cover w-full h-full"
               />
               <button
                 className="absolute top-2 right-2 text-white bg-black/50 rounded-full p-1 z-10"
-                onClick={() => setMuted(!muted)}
+                onClick={() => toggleMute(selectedIndex)}
               >
-                {muted ? <VolumeX /> : <Volume2 />}
+                {mutedStates[selectedIndex] ? <VolumeX /> : <Volume2 />}
               </button>
               <button
                 className="absolute top-2 left-2 text-white bg-black/50 rounded-full px-2 py-1 text-xs"

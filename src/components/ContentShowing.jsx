@@ -1,74 +1,171 @@
-import React, { useState, useRef } from "react";
-import { Play, ArrowUpRight } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 
 const reels = [
   {
-    title: "Behind the Stadium Build",
-    src: "https://yourcdn.com/video1.mp4",
-    thumbnail: "https://yourcdn.com/thumb1.jpg",
+    id: 1,
+    videoUrl: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4",
+    caption: "Football Turf - Pune",
+    views: "170",
+    user: "hatricksports",
+    location: "Pune, India",
+    likes: "1.2k",
+    description: "Top-grade synthetic turf project at local training academy.",
   },
   {
-    title: "Turf Laying in Slow Motion",
-    src: "https://yourcdn.com/video2.mp4",
-    thumbnail: "https://yourcdn.com/thumb2.jpg",
+    id: 2,
+    videoUrl: "https://samplelib.com/lib/preview/mp4/sample-10s.mp4",
+    caption: "School Playground - Delhi",
+    views: "188",
+    user: "infra360",
+    location: "Delhi, India",
+    likes: "1.9k",
+    description: "Custom safety turf for kids, weather-resistant and colorful.",
   },
   {
-    title: "Grass Rollout Timelapse",
-    src: "https://yourcdn.com/video3.mp4",
-    thumbnail: "https://yourcdn.com/thumb3.jpg",
+    id: 3,
+    videoUrl: "https://samplelib.com/lib/preview/mp4/sample-15s.mp4",
+    caption: "Stadium Track - Mumbai",
+    views: "160",
+    user: "playsmart",
+    location: "Mumbai, India",
+    likes: "2.3k",
+    description: "400m synthetic track built to Olympic standards.",
   },
 ];
 
-export default function InstaReelSection() {
-  const [modal, setModal] = useState(null);
+export default function ReelShowcase() {
   const scrollRef = useRef(null);
+  const [modalReel, setModalReel] = useState(null);
+
+  const scroll = (dir) => {
+    const distance = dir === "left" ? -300 : 300;
+    scrollRef.current.scrollBy({ left: distance, behavior: "smooth" });
+  };
 
   return (
-    <section className="w-full px-6 md:px-16 py-24 bg-gradient-to-br from-[#e3f8ec] via-[#d0f1e3] to-[#c0ebd9] text-gray-800">
-      <div className="max-w-7xl mx-auto">
-        {/* Heading */}
-        <h3 className="text-xl italic text-green-800 mb-4 tracking-wide">/Content</h3>
+    <div className="w-full px-4 py-10 bg-white font-sans relative">
+      <h2 className="text-3xl font-bold text-center text-purple-800 mb-6">
+        Our Sports Infra Projects
+      </h2>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-          <h2 className="text-5xl sm:text-6xl md:text-5xl lg:text-7xl font-light tracking-tight leading-tight">
-            Our{" "}
-            <span className="font-semibold italic text-yellow-500">Content </span>
-          </h2>
+      {/* Arrows */}
+      <button
+        onClick={() => scroll("left")}
+        className="absolute left-4 top-[60%] z-10 bg-white shadow-md p-2 rounded-full text-xl"
+      >
+        ⬅️
+      </button>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute right-4 top-[60%] z-10 bg-white shadow-md p-2 rounded-full text-xl"
+      >
+        ➡️
+      </button>
 
-        </div>
-
-        <p className="text-gray-700 max-w-2xl mb-8 text-sm sm:text-base">
-          Here's a glimpse into our on-ground execution and behind-the-scenes moments.
-          Every reel captures the hustle, precision, and passion that goes into each project.
-        </p>
-
-     <h2 className="text-2xl">Working on this</h2>
-
-        {/* Modal Player */}
-        {modal && (
-          <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4">
-            <div className="bg-white rounded-xl overflow-hidden max-w-2xl w-full shadow-2xl">
-              <div className="relative pb-[56.25%]">
-                <video
-                  src={modal.src}
-                  controls
-                  autoPlay
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-              <div className="p-4 flex justify-between items-center">
-                <h4 className="text-lg font-semibold">{modal.title}</h4>
-                <button
-                  onClick={() => setModal(null)}
-                  className="text-gray-600 hover:text-black font-semibold"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+      {/* Reel Cards */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto scroll-smooth scrollbar-hide px-10"
+      >
+        {reels.map((reel) => (
+          <ReelCard key={reel.id} reel={reel} onClick={() => setModalReel(reel)} />
+        ))}
       </div>
-    </section>
+
+      {modalReel && (
+        <ReelModal reel={modalReel} onClose={() => setModalReel(null)} />
+      )}
+    </div>
+  );
+}
+
+// ReelCard Component
+function ReelCard({ reel, onClick }) {
+  const videoRef = useRef();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.5 }
+    );
+    if (videoRef.current) observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      isVisible ? videoRef.current.play() : videoRef.current.pause();
+    }
+  }, [isVisible]);
+
+  return (
+    <div
+      className="min-w-[250px] max-w-[250px] rounded-xl overflow-hidden shadow-lg bg-black relative cursor-pointer"
+      onClick={onClick}
+    >
+      <video
+        ref={videoRef}
+        src={reel.videoUrl}
+        muted
+        loop
+        playsInline
+        preload="none"
+        className="w-full h-[400px] object-cover"
+      />
+      <p className="absolute bottom-20 left-4 text-yellow-300 font-bold text-lg drop-shadow">
+        {reel.caption}
+      </p>
+      <div className="flex justify-between items-center text-white text-sm px-4 py-2 bg-black/60">
+        <span>{reel.views} Views</span>
+        <span>❤️</span>
+      </div>
+    </div>
+  );
+}
+
+// Modal Reel (Insta Style)
+function ReelModal({ reel, onClose }) {
+  const videoRef = useRef();
+
+  useEffect(() => {
+    if (videoRef.current) videoRef.current.play();
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = "auto");
+  }, []);
+
+  return (
+    <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-2 md:p-8">
+      <div className="relative bg-black rounded-2xl overflow-hidden w-[95vw] max-w-[400px] h-[90vh] flex flex-col">
+        {/* Close Button */}
+        <button
+          className="absolute top-3 right-3 text-white text-2xl font-bold z-10"
+          onClick={onClose}
+        >
+          ✕
+        </button>
+
+        {/* Video */}
+        <video
+          ref={videoRef}
+          src={reel.videoUrl}
+          controls
+          autoPlay
+          muted
+          className="w-full h-[65%] object-cover"
+        />
+
+        {/* Bottom Info */}
+        <div className="p-4 text-white h-[35%] overflow-y-auto">
+          <h3 className="text-lg font-semibold">@{reel.user}</h3>
+          <p className="text-sm text-gray-400">{reel.location}</p>
+          <div className="flex gap-4 mt-1 text-sm text-gray-300">
+            <span>❤️ {reel.likes}</span>
+            <span>👁️ {reel.views} views</span>
+          </div>
+          <p className="mt-3 text-base leading-relaxed">{reel.description}</p>
+        </div>
+      </div>
+    </div>
   );
 }

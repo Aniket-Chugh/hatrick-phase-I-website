@@ -2,6 +2,46 @@ import React, { useState } from "react";
 
 export default function ContactPage() {
   const [serviceType, setServiceType] = useState("");
+  const [location, setLocation] = useState("");
+  const [isLoadingLocation, setIsLoadingLocation] = useState(false);
+
+  const getCurrentLocation = async () => {
+    if (!navigator.geolocation) {
+      alert("Geolocation not supported by your browser.");
+      return;
+    }
+
+    setIsLoadingLocation(true);
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        try {
+          const response = await fetch(
+            `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+          );
+          const data = await response.json();
+
+          if (data && data.display_name) {
+            setLocation(data.display_name);
+          } else {
+            setLocation(`${lat}, ${lon}`);
+          }
+        } catch (error) {
+          console.error("Error fetching address:", error);
+          setLocation(`${lat}, ${lon}`);
+        }
+
+        setIsLoadingLocation(false);
+      },
+      (error) => {
+        alert("Location access denied or unavailable.");
+        setIsLoadingLocation(false);
+      }
+    );
+  };
 
   return (
     <section className="w-full px-6 md:px-16 py-24 bg-gradient-to-br from-[#e3f8ec] via-[#d0f1e3] to-[#c0ebd9] text-gray-900">
@@ -26,6 +66,7 @@ export default function ContactPage() {
                 <input
                   type="text"
                   placeholder="Enter your name"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none"
                 />
               </div>
@@ -34,6 +75,7 @@ export default function ContactPage() {
                 <input
                   type="email"
                   placeholder="you@example.com"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none"
                 />
               </div>
@@ -42,17 +84,45 @@ export default function ContactPage() {
                 <input
                   type="tel"
                   placeholder="+91 XXXXX XXXXX"
+                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none"
                 />
               </div>
               <div>
-                <label className="block font-medium mb-1">Project Location</label>
+                <label className="block font-medium mb-1">Project Location (Manual or Auto)</label>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="text"
+                    placeholder="Enter location or use button"
+                    value={location}
+                    onChange={(e) => setLocation(e.target.value)}
+                    required
+                    className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none"
+                  />
+                  <button
+                    type="button"
+                    onClick={getCurrentLocation}
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-xl"
+                  >
+                    {isLoadingLocation ? "Loading..." : "Auto-Fill"}
+                  </button>
+                </div>
+              </div>
+
+              {/* HCPatha (bot-resistant hint) */}
+              <div>
+                <label className="block font-medium mb-1">
+                  HCPatha (Write area landmark, not required)
+                </label>
                 <input
                   type="text"
-                  placeholder="e.g. Bangalore, Whitefield"
+                  name="hcaptcha-trap"
+                  autoComplete="off"
+                  placeholder="e.g. Landmark near XYZ Gate"
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-400 outline-none"
                 />
               </div>
+
               <div>
                 <label className="block font-medium mb-1">Service Type</label>
                 <select
@@ -70,7 +140,9 @@ export default function ContactPage() {
                 </select>
               </div>
 
-              {(serviceType === "turf" || serviceType === "court" || serviceType === "swimming") && (
+              {(serviceType === "turf" ||
+                serviceType === "court" ||
+                serviceType === "swimming") && (
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block font-medium mb-1">Length (ft)</label>
@@ -143,6 +215,9 @@ export default function ContactPage() {
 
           {/* Google Map */}
           <div className="rounded-2xl overflow-hidden border border-yellow-200 shadow-md min-h-[500px]">
+            <div className="bg-yellow-100 py-2 px-4 font-medium text-yellow-700 border-b border-yellow-300">
+              📍 Project Locations
+            </div>
             <iframe
               title="Office Location"
               src="https://www.google.com/maps/d/embed?mid=1R9MZewfvnFak2jfBdLf6bPSh7_rTfA4&ehbc=2E312F"
